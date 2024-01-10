@@ -28,8 +28,8 @@ export const signin = async (req, res, next) => {
     if (!validPassword) return next(errorHandler(401, 'Wrong credentials!'));
     const token = jwt.sign({ id: validUser._id }, process.env.JWT_SECRET);
     const { password: pass, ...rest } = validUser._doc;
-    res
     const expirationTime = new Date(Date.now() + 3600 * 1000);
+    res
       .cookie('access_token', token, { httpOnly: true, expires: expirationTime  })
       .status(200)
       .json(rest);
