@@ -98,7 +98,7 @@ export default function Profile() {
   };
 
   const handleDeleteUser = async () => {
-    
+    if (confirm("Are you sure you want to delete your account?")){
     try {
       dispatch(deleteUserStart());
       const res = await fetch(`/api/user/delete/${currentUser._id}`, {
@@ -113,6 +113,7 @@ export default function Profile() {
     } catch (error) {
       dispatch(deleteUserFailure(error.message));
     }
+  }
   };
 
   const handleSignOut = async () => {
@@ -239,36 +240,13 @@ export default function Profile() {
           Create Listing
         </Link>
       </form>
-      <div className='flex justify-between mt-5'>
       <button
-          className="bg-red-500 text-white px-4 py-2 rounded"
-          onClick={handleDeleteUser}
-        >
-          Delete Account
-        </button>
-        <button
-          className="bg-red-500 text-white px-4 py-2 rounded"
-          onClick={handleSignOut}
-        >
-          Sign Out
-        </button>
-      </div>
-
-      <p className='text-red-700 mt-5'>{error ? error : ''}</p>
-      <p className='text-green-700 mt-5'>
-        {updateSuccess ? 'User is updated successfully!' : ''}
-      </p> 
-      <button
-          className="bg-blue-500 text-white px-4 py-2 rounded"
+          className="bg-blue-500 text-white px-4 py-2 rounded my-3"
           onClick={handleShowListings}
         >
           Show Listings
         </button>
-
-      <p className='text-red-700 mt-5'>
-        {showListingsError ? 'Error showing listings' : ''}
-      </p>
-
+        
       {userListings && userListings.length > 0 && (
         <div className='flex flex-col gap-4'>
           <h1 className='text-center mt-7 text-2xl font-semibold'>
@@ -308,6 +286,35 @@ export default function Profile() {
           ))}
         </div>
       )}
+
+      <div className='flex justify-between mt-5'>
+  
+        <button
+          className="bg-red-500 text-white px-4 py-2 rounded"
+          onClick={handleSignOut}
+        >
+          Sign Out
+        </button>
+      </div>
+
+      <p className='text-red-700 mt-5'>{error ? error : ''}</p>
+      <p className='text-green-700 mt-5'>
+        {updateSuccess ? 'User is updated successfully!' : ''}
+      </p> 
+    
+
+      <p className='text-red-700 mt-5'>
+        {showListingsError ? 'Error showing listings' : ''}
+      </p>
+      <div class="border-2 border-red-500 p-10 text-center">
+  <p>Danger Zone</p>
+  <button
+    className="bg-red-500 text-white px-4 py-2 rounded"
+    onClick={handleDeleteUser}
+  >
+    Delete Account
+  </button>
+</div>
     </div>
     
   );
