@@ -12,4 +12,4 @@ router.route('/:id')
 router.get('/listings/:id', verifyToken, getUserListings);
 router.post('/update/:id', verifyToken, updateUser);
 
-// improve readability and maintainability of the code while preserving the same output and functionality.
+// improve readability and maintainabilit  by refactoring of the code while preserving the same output and functionality.
