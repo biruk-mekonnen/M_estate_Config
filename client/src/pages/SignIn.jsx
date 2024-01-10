@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -21,10 +22,17 @@ export default function SignIn() {
       [e.target.id]: e.target.value,
     });
   };
+
+  useEffect(() => {
+    dispatch(signInFailure(null));
+  }, [dispatch]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      dispatch(signInFailure(null))
       dispatch(signInStart());
+
       const res = await fetch('/api/auth/signin', {
         method: 'POST',
         headers: {
