@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -22,16 +21,10 @@ export default function SignIn() {
       [e.target.id]: e.target.value,
     });
   };
-  useEffect(() => {
-    dispatch(signInFailure(null));
-  }, [dispatch]);
- 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      dispatch(signInFailure(null));
       dispatch(signInStart());
-     
       const res = await fetch('/api/auth/signin', {
         method: 'POST',
         headers: {
@@ -76,7 +69,7 @@ export default function SignIn() {
             </div>
             <div className="relative">
               <input
-                type="password"
+                type={showPassword ? 'text' : 'password'}
                 placeholder="Password"
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                 id="password"
@@ -86,6 +79,7 @@ export default function SignIn() {
             </div>
             <div className="flex items-center justify-between">
   <label htmlFor="showPassword" className="text-gray-600">
+
     <input
       type="checkbox"
       id="showPassword"
@@ -110,6 +104,7 @@ export default function SignIn() {
             <OAuth />
             </div>
           </form>
+
           {error && <p className="text-red-500 mt-5 text-center">{error}</p>}
           <div className="mt-5">
           <p className="text-center text-sm text-gray-600">Don't have an account?
