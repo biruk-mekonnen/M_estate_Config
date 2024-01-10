@@ -5,3 +5,36 @@
 body{
     background-color: rgb(241, 245, 241);
 }
+button:hover {
+    background-color: rgb(86, 147, 211);
+    color: white;
+  }
+  
+  button.bg-red-500:hover {
+    background-color: rgb(75, 3, 3);
+  }
+  .link-button {
+    background-color: rgb(62, 62, 65); /* bg-slate-500 */
+    color: #fff; /* text-white */
+    padding: 0.5rem 1rem; /* px-4 py-2 */
+    border-radius: 0.25rem; /* rounded */
+    display: inline-block;
+    text-decoration: none;
+   
+  }
+  
+  .link-button:hover {
+    opacity: 0.9;
+  }
+  
+  .link-button button {
+    margin: 2px;
+    background: none;
+    border: none;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+    padding: 0;
+    justify-content: 1.05px;
+
+  }
