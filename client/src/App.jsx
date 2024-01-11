@@ -10,11 +10,13 @@ import CreateListing from './pages/CreateListing';
 import UpdateListing from './pages/UpdateListing';
 import Listing from './pages/Listing';
 import Search from './pages/Search';
-
+import Headroom from 'react-headroom'
 export default function App() {
   return (
     <BrowserRouter>
+  <Headroom>
     <Header />
+    </Headroom>
     <Routes>
       <Route path='/' element={<Home />} />
       <Route path='/sign-in' element={<SignIn />} />

@@ -64,7 +64,9 @@ export default function Home() {
           to={'/search'}
           className='text-xs sm:text-sm text-blue-800 font-bold hover:underline'
         >
-          Let's get started...
+          <button className="border p-3 rounded-2xl w-[140px] bg-white">
+          Let's get started
+                </button>
         </Link>
       </div>
 
@@ -93,39 +95,57 @@ export default function Home() {
           <div className=''>
             <div className='my-3'>
               <h2 className='text-2xl font-semibold text-slate-600'>Recent offers</h2>
-              <Link className='text-sm text-blue-800 hover:underline' to={'/search?offer=true'}>Show more offers</Link>
+              
             </div>
             <div className='flex flex-wrap gap-4'>
               {offerListings.map((listing) => (
                 <ListingItem listing={listing} key={listing._id} />
               ))}
             </div>
+            <br />
+            <Link className='text-sm text-blue-800 hover:underline' to={'/search?offer=true'}>
+              <button className="border p-3 rounded-2xl w-[210px] bg-white">
+              Show more places for sale
+                </button>
+                </Link>
           </div>
         )}
         {rentListings && rentListings.length > 0 && (
           <div className=''>
             <div className='my-3'>
               <h2 className='text-2xl font-semibold text-slate-600'>Recent places for rent</h2>
-              <Link className='text-sm text-blue-800 hover:underline' to={'/search?type=rent'}>Show more places for rent</Link>
+          
             </div>
             <div className='flex flex-wrap gap-4'>
               {rentListings.map((listing) => (
                 <ListingItem listing={listing} key={listing._id} />
               ))}
             </div>
+            <br />
+            <Link className='text-sm text-blue-800 hover:underline' to={'/search?type=rent'}>
+              <button className="border p-3 rounded-2xl w-[210px] bg-white">
+              Show more places for rent
+                </button>
+                </Link>
           </div>
         )}
         {saleListings && saleListings.length > 0 && (
           <div className=''>
             <div className='my-3'>
               <h2 className='text-2xl font-semibold text-slate-600'>Recent places for sale</h2>
-              <Link className='text-sm text-blue-800 hover:underline' to={'/search?type=sale'}>Show more places for sale</Link>
+             
             </div>
             <div className='flex flex-wrap gap-4'>
               {saleListings.map((listing) => (
                 <ListingItem listing={listing} key={listing._id} />
               ))}
             </div>
+            <br />
+            <Link className='text-sm text-blue-800 hover:underline' to={'/search?type=sale'}>
+              <button className="border p-3 rounded-2xl w-[210px] bg-white">
+              Show more places for sale
+                </button>
+                </Link>
           </div>
         )}
       </div>
