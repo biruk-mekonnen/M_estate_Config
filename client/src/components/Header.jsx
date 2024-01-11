@@ -12,7 +12,7 @@ export default function Header() {
     const urlParams = new URLSearchParams(window.location.search);
     urlParams.set('searchTerm', searchTerm);
     const searchQuery = urlParams.toString();
-    navigate(`/search?${searchQuery}`);
+    navigate('/search?${searchQuery}');
   };
 
   useEffect(() => {
@@ -23,30 +23,15 @@ export default function Header() {
     }
   }, [location.search]);
   return (
-    <header className='bg-slate-200 shadow-md'>
-      <div className='flex justify-between items-center max-w-6xl mx-auto p-3'>
+    <header class='bg-white'>
+      <div className='flex justify-between items-center max-w-6xl mx-auto '>
         <Link to='/'>
           <h1 className='font-bold text-sm sm:text-xl flex flex-wrap'>
             <span className='text-slate-500'>Menoria</span>
             
           </h1>
         </Link>
-        <form
-          onSubmit={handleSubmit}
-          className='bg-slate-100 p-3 rounded-lg flex items-center'
-        >
-          <input
-            type='text'
-            placeholder='Search...'
-            className='bg-transparent focus:outline-none w-24 sm:w-64'
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-          <button>
-            <FaSearch className='text-slate-600' />
-          </button>
-        </form>
-        <ul className='flex gap-4'>
+        <ul className='flex gap-12'>
           <Link to='/'>
             <li className='hidden sm:inline text-slate-700 hover:underline'>
               Home
@@ -69,7 +54,21 @@ export default function Header() {
             )}
           </Link>
         </ul>
-      </div>
+        <div class='pt-2'>
+          <form onSubmit={handleSubmit} action="" >
+                <input type='text'
+            
+              class="peer cursor-pointer relative z-10 h-12 w-12 rounded-full border bg-transparent pl-12 outline-none focus:w-full focus:cursor-text focus:border-lime-300 focus:pl-16 focus:pr-4" value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}/>
+              <svg xmlns="http://www.w3.org/2000/svg" class="relative bottom-9 left-0.5 my-auto h-8 w-12 border-r border-transparent stroke-gray-500 px-3.5 peer-focus:border-lime-300 peer-focus:stroke-lime-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                
+                </form>
+              </div>
+            </div>
+
+          
     </header>
   );
 }
