@@ -1,15 +1,20 @@
 import express from 'express';
-import {  test, updateUser, deleteUser, getUserListings, getUser } from '../controllers/user.controller.js';
+import {  test, updateUser, deleteUser,getUserListings,getUser } from '../controllers/user.controller.js';
 import { verifyToken } from '../utils/verifyUser.js';
+
+
+
 
 const router = express.Router();
 
-router.route('/:id')
-  .get(verifyToken, getUser)
-  .delete(verifyToken, deleteUser)
-  .post(verifyToken, updateUser);
+router.get('/test', test);
+router.post('/update/:id', verifyToken, updateUser)
+router.delete('/delete/:id', verifyToken, deleteUser)
+router.get ('/listings/:id', verifyToken,getUserListings)
+router.get ('/:id', verifyToken,getUser)
 
-router.get('/listings/:id', verifyToken, getUserListings);
-router.post('/update/:id', verifyToken, updateUser);
+export default router;
 
-// improve readability and maintainability 
+
+
+// 1 19
